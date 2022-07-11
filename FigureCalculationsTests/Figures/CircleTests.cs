@@ -1,10 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FigureCalculations.Figures;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FigureCalculations.Figures.Tests
 {
@@ -56,6 +50,20 @@ namespace FigureCalculations.Figures.Tests
 
             //assert
             Assert.AreEqual(expectedArea, actualArea);
+        }
+
+        [DataTestMethod]
+        [DynamicData(nameof(GetData), DynamicDataSourceType.Method)]
+        public void Circle_SetNameTest(double radius, double _)
+        {
+            //arange
+            Shape circle = new Circle(radius);
+
+            //act
+            string? actualName = circle.Name;
+
+            //assert
+            Assert.IsTrue(actualName?.Contains("Circle"));
         }
     }
 }

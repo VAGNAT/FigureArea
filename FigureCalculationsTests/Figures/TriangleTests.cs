@@ -1,11 +1,4 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FigureCalculations.Figures;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Text.RegularExpressions;
 
 namespace FigureCalculations.Figures.Tests
 {
@@ -60,7 +53,6 @@ namespace FigureCalculations.Figures.Tests
         }
         #endregion
 
-        [TestMethod()]
         [ExpectedException(typeof(ArgumentOutOfRangeException), "Exception was not thrown")]
         [DataTestMethod]
         [DynamicData(nameof(GetDataForConstructorTest), DynamicDataSourceType.Method)]
@@ -70,7 +62,6 @@ namespace FigureCalculations.Figures.Tests
             new Triangle(sideA, sideB, sideC);
         }
 
-        [TestMethod()]
         [DataTestMethod]
         [DynamicData(nameof(GetDataForAreaTest), DynamicDataSourceType.Method)]
         public void GetShapeAreaTest(double sideA, double sideB, double sideC, double expectedArea)
@@ -84,8 +75,7 @@ namespace FigureCalculations.Figures.Tests
             //assert
             Assert.AreEqual(expectedArea, actualArea);
         }
-
-        [TestMethod()]
+        
         [DataTestMethod]
         [DynamicData(nameof(GetDataForNameTest), DynamicDataSourceType.Method)]
         public void Triangle_SetNameTest(double sideA, double sideB, double sideC, string expectedName)
